@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+</head>
+<body>
+
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+
+<script>
+
+    $(document).ready(function () {
+        
+        var apiurl = "https://api.instagram.com/v1/users/self/media/recent/?access_token=6097645871.70cc4c5.ac67dc68f73a4fbd910c41769bae98f7&callback=?";
+        $.getJSON(apiurl, function (data) {
+            
+			var media = data.data;
+
+            $.each(media, function (key, val) {
+                var lowurl = val.images.low_resolution.url;
+                var instaPostUrl = val.link;
+                var InstaCapt = val.caption.text;
+                var suatpaket = "<a target='_blank' href='"+instaPostUrl+"'><img src='" + lowurl + "'/><br>"+InstaCapt+"<br></a>";
+                $(".instagram").append(suatpaket);
+            });
+
+        });
+    });
+
+
+</script>
+
+
+InstaTest
+
+
+
+
+<div class = 'instagram' ></div>
+
+</body>
+</html>
