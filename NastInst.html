@@ -47,7 +47,7 @@
         
         var apiurl = "https://api.instagram.com/v1/users/self/media/recent/?access_token=6097645871.70cc4c5.ac67dc68f73a4fbd910c41769bae98f7&callback=?";
         $.getJSON(apiurl, function (data) {
-            
+			alert("ku");
 			var media = data.data;
 
             $.each(media, function (key, val) {
@@ -72,7 +72,7 @@
 
             if (slides.length == i + 1)
             i = -1;
-
+C:\Users\Andrey\Documents\Nastya\InstAssignment
               slides.eq(i + 1).fadeIn(1000);
         slides.eq(i + 1).addClass('active');
 
