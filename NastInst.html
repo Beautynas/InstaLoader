@@ -2,9 +2,39 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Test</title>
+    <title>Instagram Gallery</title>
+	<style>
+		.wrapper {
+		  width: 960px;
+		  margin: 0 auto;
+		  padding-top: 50px;
+		}
+
+		.slider {
+		  margin: 10px 0;
+		  width: 580px;
+		  height: 250px;
+		  position: relative;
+		  overflow: hidden;
+		}
+
+		.slider li {
+		  display: none;
+		  position: absolute;
+		  top: 0;
+		  left: 0;
+		}
+	</style>
 </head>
 <body>
+<div class = 'instagram' ></div>
+
+<div class="wrapper">
+ <button type="button" id="btnNext">Click Me!</button>
+    <ul class="slider">
+      
+    </ul>
+</div>
 
 <script
   src="https://code.jquery.com/jquery-3.2.1.min.js"
@@ -26,21 +56,40 @@
                 var InstaCapt = val.caption.text;
                 var suatpaket = "<a target='_blank' href='"+instaPostUrl+"'><img src='" + lowurl + "'/><br>"+InstaCapt+"<br></a>";
                 $(".instagram").append(suatpaket);
+				$(".slider").append('<li><img src="' + lowurl   + '" /></li>');
             });
+        });
+		$('.slider').find('li').fadeOut();
+		$('.slider').find('li').first().addClass('active');
+		
+		$( "#btnNext" ).click(function() {
+		alert("Ku");
+			var i = $('.slider').find('li.active').index();
+			var slides = $('.slider').find('li');
+
+            slides.eq(i).removeClass('active');
+            slides.eq(i).fadeOut(1000);
+
+            if (slides.length == i + 1)
+            i = -1;
+
+              slides.eq(i + 1).fadeIn(1000);
+        slides.eq(i + 1).addClass('active');
+
 
         });
+
     });
 
 
 </script>
 
 
-InstaTest
 
 
 
 
-<div class = 'instagram' ></div>
+
 
 </body>
 </html>
